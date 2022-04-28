@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:kenburns/kenburns.dart';
+import 'package:kenburns_nullsafety/kenburns_nullsafety.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,7 +34,8 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
               ),
-              */Container(
+              */
+              Container(
                 height: 300,
                 child: KenBurns.multiple(
                   maxAnimationDuration: Duration(seconds: 10),
