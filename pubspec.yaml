@@ -1,7 +1,6 @@
 name: kenburns_nullsafety
 description: The migration of the kenburns effect plugin to null-safety. The Ken Burns effect is a type of panning and zooming effect used in video production from still imagery.
-version: 1.0.6
-#author: Florent Champigny <champigny.florent@gmail.com>
+version: 1.0.0
 homepage: https://github.com/the-Jinxist/kenburns_nullsafety.git
 
 environment:

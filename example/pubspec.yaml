@@ -1,5 +1,5 @@
 name: kenburns_example
-description: Demonstrates how to use the kenburns plugin.
+description: Demonstrates how to use the kenburns nullsafety plugin.
 publish_to: 'none'
 
 environment:

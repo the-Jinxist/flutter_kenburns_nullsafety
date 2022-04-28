@@ -1,4 +1,4 @@
-package com.github.florent37.kenburns_example
+package com.neo.kenburns_nullsafety
 
 import io.flutter.embedding.android.FlutterActivity
 

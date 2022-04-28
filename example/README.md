@@ -2,6 +2,20 @@
 
 The Ken Burns effect is a type of panning and zooming effect used in video production from still imagery.
 
+First add to your dependencies:
+
+```
+dependencies:
+  kenburns_nullsafety: 
+```
+
+Then import:
+
+```
+  import 'package:kenburns_nullsafety/kenburns_nullsafety.dart';
+```
+
+
 Wrap your image with a KenBurns widget
 ```dart
 Container(
@@ -12,7 +26,7 @@ Container(
 ),
 ```
 
-[![screen](https://raw.githubusercontent.com/florent37/Flutter-KenBurns/master/medias/kenburns_slow.gif)](https://www.github.com/florent37/Flutter-KenBurns)
+[![screen](https://raw.githubusercontent.com/florent37/Flutter-KenBurns/master/medias/kenburns_slow.gif)](https://github.com/the-Jinxist/kenburns_nullsafety.git)
 
 # Configuration
 
@@ -25,15 +39,6 @@ KenBurns(
     maxScale : 8,
     child: ...
   });
-```
-
-# Download
-
-https://pub.dev/packages/kenburns
-
-```
-dependencies:
-  kenburns: 
 ```
 
 ## Getting Started with Flutter
