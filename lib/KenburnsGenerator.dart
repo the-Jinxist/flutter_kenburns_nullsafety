@@ -1,8 +1,6 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:flutter/foundation.dart';
-
 /// The generated configuration of KenBurns (scale, translation, duration)
 class KenBurnsGeneratorConfig {
   double newScale;
@@ -44,7 +42,10 @@ class KenburnsGenerator {
   }
 
   Offset generateNextTranslation(
-      {required double width, required double height, required Size nextSize, double? nextScale}) {
+      {required double width,
+      required double height,
+      required Size nextSize,
+      double? nextScale}) {
     final availableXOffset = ((nextSize.width - width) / 2);
     final availableYOffset = ((nextSize.height - height) / 2);
 

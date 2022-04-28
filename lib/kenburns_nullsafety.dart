@@ -43,13 +43,10 @@ class KenBurns extends StatefulWidget {
   })  : this.childrenFadeDuration = null,
         this.children = null,
         this.childLoop = null,
-        assert(minAnimationDuration != null &&
-            minAnimationDuration.inMilliseconds > 0),
-        assert(maxAnimationDuration != null &&
-            maxAnimationDuration.inMilliseconds > 0),
+        assert(minAnimationDuration.inMilliseconds > 0),
+        assert(maxAnimationDuration.inMilliseconds > 0),
         assert(minAnimationDuration < maxAnimationDuration),
-        assert(maxScale > 1),
-        assert(child != null);
+        assert(maxScale > 1);
 
   /// Constructor for multiple child KenBurns
   KenBurns.multiple(
@@ -154,7 +151,8 @@ class _KenBurnsState extends State<KenBurns> with TickerProviderStateMixin {
 
   /// Generate the next animation [scale, duration, translation]
   /// Using the [KenBurnsGenerator] generateNextConfig
-  Future<void> _createNextAnimations({required double height, required double width}) async {
+  Future<void> _createNextAnimations(
+      {required double height, required double width}) async {
     final KenBurnsGeneratorConfig nextConfig =
         _kenburnsGenerator.generateNextConfig(
             width: width,
@@ -197,19 +195,19 @@ class _KenBurnsState extends State<KenBurns> with TickerProviderStateMixin {
         .animate(
       CurvedAnimation(parent: _translationController!, curve: Curves.linear),
     )..addListener(() {
-            setState(() {
-              _currentTranslationX = _translationXAnim.value;
-            });
-          });
+        setState(() {
+          _currentTranslationX = _translationXAnim.value;
+        });
+      });
     _translationYAnim = Tween(
             begin: this._currentTranslationY, end: nextConfig.newTranslation.dy)
         .animate(
       CurvedAnimation(parent: _translationController!, curve: Curves.linear),
     )..addListener(() {
-            setState(() {
-              _currentTranslationY = _translationYAnim.value;
-            });
-          });
+        setState(() {
+          _currentTranslationY = _translationYAnim.value;
+        });
+      });
 
     log("kenburns started");
     log("kenburns d(${nextConfig.newDuration}) translation(${nextConfig.newTranslation.dx}, ${nextConfig.newTranslation.dy}) scale(${nextConfig.newScale})");
