@@ -1,5 +1,7 @@
 # KenBurns
 
+The Ken Burns effect is a type of panning and zooming effect used in video production from still imagery.
+
 First add to your dependencies:
 
 ```
@@ -7,7 +9,11 @@ dependencies:
   kenburns_nullsafety: 
 ```
 
-The Ken Burns effect is a type of panning and zooming effect used in video production from still imagery.
+Then import:
+
+```
+  import 'package:kenburns_nullsafety/kenburns_nullsafety.dart';
+```
 
 Wrap your image with a KenBurns widget
 ```dart
@@ -59,14 +65,4 @@ Container(
       ],
     ),
 ),
-```
-
-# Download
-
-[![pub package](https://img.shields.io/pub/v/kenburns.svg)](
-https://pub.dartlang.org/packages/kenburns)
-
-```
-dependencies:
-  kenburns_nullsafety: ^1.0.5
 ```
