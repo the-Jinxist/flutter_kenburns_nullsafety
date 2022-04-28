@@ -1,7 +1,3 @@
-## 1.0.5
+## 1.0.0
 
-* Handle widget updates
-
-## 1.0.3
-
-* Fixed scale & translation animation
+* Migration to null-safe
