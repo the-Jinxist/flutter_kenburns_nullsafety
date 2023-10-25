@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'KenburnsGenerator.dart';
+import 'kenburns_generator.dart';
 
 /// KenBurns widget, please provide a `child` Widget,
 /// Will animate the child, using random scale, translation & duration
@@ -36,30 +36,34 @@ class KenBurns extends StatefulWidget {
 
   /// Constructor for a single child KenBurns
   KenBurns({
+    Key? key,
     required Widget this.child,
     this.minAnimationDuration = const Duration(milliseconds: 3000),
     this.maxAnimationDuration = const Duration(milliseconds: 10000),
     this.maxScale = 8,
-  })  : this.childrenFadeDuration = null,
-        this.children = null,
-        this.childLoop = null,
+  })  : childrenFadeDuration = null,
+        children = null,
+        childLoop = null,
         assert(minAnimationDuration.inMilliseconds > 0),
         assert(maxAnimationDuration.inMilliseconds > 0),
         assert(minAnimationDuration < maxAnimationDuration),
-        assert(maxScale > 1);
+        assert(maxScale > 1),
+        super(key: key);
 
   /// Constructor for multiple child KenBurns
-  KenBurns.multiple(
-      {this.minAnimationDuration = const Duration(milliseconds: 1000),
+  const KenBurns.multiple(
+      {Key? key,
+      this.minAnimationDuration = const Duration(milliseconds: 1000),
       this.maxAnimationDuration = const Duration(milliseconds: 10000),
       this.maxScale = 10,
       this.childLoop = 3,
       this.children,
       this.childrenFadeDuration = const Duration(milliseconds: 800)})
-      : this.child = null;
+      : child = null,
+        super(key: key);
 
   @override
-  _KenBurnsState createState() => _KenBurnsState();
+  State<KenBurns> createState() => _KenBurnsState();
 }
 
 class _KenBurnsState extends State<KenBurns> with TickerProviderStateMixin {
@@ -99,10 +103,10 @@ class _KenBurnsState extends State<KenBurns> with TickerProviderStateMixin {
   bool _scaleDown = true;
 
   /// For developpers : set to true to enable logs
-  bool _displayLogs = false;
+  final bool _displayLogs = false;
 
   /// The random [scale/duration/translation] generator
-  KenburnsGenerator _kenburnsGenerator = KenburnsGenerator();
+  final KenburnsGenerator _kenburnsGenerator = KenburnsGenerator();
 
   //region multiple childs
   /// if true : the widget setup is multipleImages
@@ -174,14 +178,13 @@ class _KenBurnsState extends State<KenBurns> with TickerProviderStateMixin {
       vsync: this,
     );
 
-    _scaleAnim =
-        Tween(begin: this._currentScale, end: nextConfig.newScale).animate(
+    _scaleAnim = Tween(begin: _currentScale, end: nextConfig.newScale).animate(
       CurvedAnimation(parent: _scaleController!, curve: Curves.linear),
     )..addListener(() {
-            setState(() {
-              _currentScale = _scaleAnim.value;
-            });
-          });
+        setState(() {
+          _currentScale = _scaleAnim.value;
+        });
+      });
 
     /// Recreate the translations animations
     _translationController?.dispose();
@@ -190,24 +193,24 @@ class _KenBurnsState extends State<KenBurns> with TickerProviderStateMixin {
       vsync: this,
     );
 
-    _translationXAnim = Tween(
-            begin: this._currentTranslationX, end: nextConfig.newTranslation.dx)
-        .animate(
+    _translationXAnim =
+        Tween(begin: _currentTranslationX, end: nextConfig.newTranslation.dx)
+            .animate(
       CurvedAnimation(parent: _translationController!, curve: Curves.linear),
     )..addListener(() {
-        setState(() {
-          _currentTranslationX = _translationXAnim.value;
-        });
-      });
-    _translationYAnim = Tween(
-            begin: this._currentTranslationY, end: nextConfig.newTranslation.dy)
-        .animate(
+            setState(() {
+              _currentTranslationX = _translationXAnim.value;
+            });
+          });
+    _translationYAnim =
+        Tween(begin: _currentTranslationY, end: nextConfig.newTranslation.dy)
+            .animate(
       CurvedAnimation(parent: _translationController!, curve: Curves.linear),
     )..addListener(() {
-        setState(() {
-          _currentTranslationY = _translationYAnim.value;
-        });
-      });
+            setState(() {
+              _currentTranslationY = _translationYAnim.value;
+            });
+          });
 
     log("kenburns started");
     log("kenburns d(${nextConfig.newDuration}) translation(${nextConfig.newTranslation.dx}, ${nextConfig.newTranslation.dy}) scale(${nextConfig.newScale})");
@@ -225,7 +228,7 @@ class _KenBurnsState extends State<KenBurns> with TickerProviderStateMixin {
   /// Display on debug logs (enable with [_displayLogs])
   void log(String text) {
     if (_displayLogs) {
-      print(text);
+      log(text);
     }
   }
 

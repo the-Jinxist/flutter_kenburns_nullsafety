@@ -16,7 +16,7 @@ class KenBurnsGeneratorConfig {
 
 /// The random scale, translation, duration generator
 class KenburnsGenerator {
-  Random _random = Random();
+  final Random _random = Random();
 
   KenburnsGenerator();
 
@@ -26,7 +26,7 @@ class KenburnsGenerator {
 
   double generateNextScale(
       {double? lastScale, double? maxScale, required bool scaleDown}) {
-    final double minScale = 1.0;
+    const double minScale = 1.0;
     if (scaleDown && minScale < lastScale!) {
       return _randomValue(minScale, lastScale);
     } else {
