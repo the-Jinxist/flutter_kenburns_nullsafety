@@ -2,7 +2,7 @@
 
 * Migration to null-safe
 
-## 1.0.2
+## 1.0.1
 
 * Added linter, removed warnings
 * Removed unfinished localization 
